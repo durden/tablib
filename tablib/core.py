@@ -20,7 +20,7 @@ try:
 except ImportError, why:
     from packages import yaml
 
-	
+
 
 __all__ = ['Dataset', 'source']
 
@@ -33,7 +33,14 @@ __copyright__ = 'Copyright 2010 Kenneth Reitz'
 
 FILE_EXTENSIONS = ('csv', 'json', 'xls', 'yaml')
 
+class BaseFormat(object):
+	"""Base object for Format handlers"""
 
+	def __init__(self):
+		self.extentions = ()
+		self.importer = None
+		self.exporter = None
+		self.detector = None
 
 class Dataset(object):
 	"""Epic Tabular-Dataset object. """
